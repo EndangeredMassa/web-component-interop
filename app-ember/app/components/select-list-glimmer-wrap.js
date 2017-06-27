@@ -16,7 +16,7 @@ export default Ember.Component.extend({
 
   webComponentElement: computed({
     get() {
-      return this.$('select-list')[0];
+      return this.$('select-list-glimmer')[0];
     }
   }),
 

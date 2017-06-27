@@ -10385,9 +10385,9 @@ var SelectList = function (_AttrComponent) {
 __decorate([tracked('htmlAttrs')], SelectList.prototype, "items", null);
 __decorate([tracked('htmlAttrs')], SelectList.prototype, "icon", null);
 
-var __ui_components_select_list_template__ = { "id": "goSEAtWL", "block": "{\"symbols\":[\"item\"],\"statements\":[[6,\"div\"],[7],[0,\"\\n\\n\"],[4,\"each\",[[19,0,[\"items\"]]],[[\"key\"],[\"@index\"]],{\"statements\":[[0,\"    \"],[6,\"div\"],[9,\"class\",\"select-list__item\"],[7],[0,\"\\n      \"],[1,[19,1,[\"label\"]],false],[0,\"\\n      \"],[6,\"button\"],[9,\"type\",\"button\"],[9,\"class\",\"select-list__select-button\"],[10,\"onclick\",[25,\"action\",[[19,0,[\"selectItem\"]],[19,1,[\"value\"]]],null],null],[7],[1,[18,\"icon\"],false],[8],[0,\"\\n    \"],[8],[0,\"\\n\"]],\"parameters\":[1]},null],[0,\"\\n\"],[8]],\"hasEval\":false}", "meta": { "specifier": "template:/lib-glimmer/components/select-list" } };
+var __ui_components_select_list_glimmer_template__ = { "id": "XLyxQoLQ", "block": "{\"symbols\":[\"item\"],\"statements\":[[6,\"div\"],[7],[0,\"\\n\\n\"],[4,\"each\",[[19,0,[\"items\"]]],[[\"key\"],[\"@index\"]],{\"statements\":[[0,\"    \"],[6,\"div\"],[9,\"class\",\"select-list__item\"],[7],[0,\"\\n      \"],[1,[19,1,[\"label\"]],false],[0,\"\\n      \"],[6,\"button\"],[9,\"type\",\"button\"],[9,\"class\",\"select-list__select-button\"],[10,\"onclick\",[25,\"action\",[[19,0,[\"selectItem\"]],[19,1,[\"value\"]]],null],null],[7],[1,[18,\"icon\"],false],[8],[0,\"\\n    \"],[8],[0,\"\\n\"]],\"parameters\":[1]},null],[0,\"\\n\"],[8]],\"hasEval\":false}", "meta": { "specifier": "template:/lib-glimmer/components/select-list-glimmer" } };
 
-var moduleMap = { 'component:/lib-glimmer/components/select-list': SelectList, 'template:/lib-glimmer/components/select-list': __ui_components_select_list_template__ };
+var moduleMap = { 'component:/lib-glimmer/components/select-list-glimmer': SelectList, 'template:/lib-glimmer/components/select-list-glimmer': __ui_components_select_list_glimmer_template__ };
 
 var resolverConfiguration = { "app": { "name": "lib-glimmer", "rootName": "lib-glimmer" }, "types": { "application": { "definitiveCollection": "main" }, "component": { "definitiveCollection": "components" }, "helper": { "definitiveCollection": "components" }, "renderer": { "definitiveCollection": "main" }, "template": { "definitiveCollection": "components" } }, "collections": { "main": { "types": ["application", "renderer"] }, "components": { "group": "ui", "types": ["component", "template", "helper"], "defaultType": "component", "privateCollections": ["utils"] }, "styles": { "group": "ui", "unresolvable": true }, "utils": { "unresolvable": true } } };
 
@@ -10463,7 +10463,7 @@ app.registerInitializer({
 //   app.renderComponent('lib-glimmer', containerElement, null);
 // }
 app.boot();
-initializeCustomElements(app, [{ name: 'select-list', trackedAttributes: ['items', 'icon'] }]);
+initializeCustomElements(app, [{ name: 'select-list-glimmer', trackedAttributes: ['items', 'icon'] }]);
 
 })));
 

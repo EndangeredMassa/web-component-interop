@@ -26,7 +26,7 @@
   }
 
   class SelectList extends HTMLElement {
-    static get is() { return 'select-list'; }
+    static get is() { return 'select-list-raw'; }
 
     constructor() {
       super();

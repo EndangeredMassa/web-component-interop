@@ -22,6 +22,6 @@ app.registerInitializer({
 app.boot();
 
 initializeCustomElements(app, [
-  {name: 'select-list', trackedAttributes: ['items', 'icon']}
+  {name: 'select-list-glimmer', trackedAttributes: ['items', 'icon']}
 ]);
 

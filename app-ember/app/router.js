@@ -8,6 +8,10 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('index', {path: '/'});
+
+  this.route('lib', {path: '/lib'}, function() {
+    this.route('glimmer', {path: '/glimmer'});
+  });
 });
 
 export default Router;

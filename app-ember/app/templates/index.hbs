@@ -1,10 +1,4 @@
 
-Todo: {{input value=newTodo id="new-todo"}}
-<button id="add-todo" {{action 'addItem'}}> + </button>
+{{#link-to 'lib.glimmer'}}Glimmer{{/link-to}}
 
-<hr>
-
-{{select-list-glimmer
-  items=items
-  icon="X"
-  onSelectItem=(action 'removeItem')}}
+{{outlet}}
