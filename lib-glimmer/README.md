@@ -26,3 +26,11 @@ Note that live reloading will not work, but file watching and rebuilding will wo
 
 We need to do this because you can't easily test your component in web-component mode
 with `ember s`.
+
+
+## deploy (to local apps)
+
+```
+ember build
+cp dist/app.js ../app-ember/public/lib-glimmer.js
+```
