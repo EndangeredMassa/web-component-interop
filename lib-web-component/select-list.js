@@ -43,6 +43,8 @@ class SelectList extends HTMLElement {
 
     // setup web component's shadow root
     this.attachShadow({mode: 'open'});
+
+    this._handleSelectClick = this._handleSelectClick.bind(this);
   }
   
   // Monitor the 'name' attribute for changes.
@@ -64,7 +66,7 @@ class SelectList extends HTMLElement {
   }
 
   render(){
-    // TODO: remove event handlers
+    this._removeEventHandlers();
     this._removeChildren();
     this._interpolateAttributes(this.itemTemplate);
     this._setupEventHandlers();
@@ -94,14 +96,22 @@ class SelectList extends HTMLElement {
     this.shadowRoot.innerHTML = renderedItems.join('');
   }
 
+  _removeEventHandlers() {
+     this.shadowRoot.querySelectorAll('.select-list__select-button').forEach((button) => {
+      button.removeEventListener("click", this._handleSelectClick, false);
+    });
+  }
+
   _setupEventHandlers() {
     this.shadowRoot.querySelectorAll('.select-list__select-button').forEach((button) => {
-      button.addEventListener("click", (clickEvent) => {
-        const itemValue = parseAttributes(clickEvent.target.attributes)['data-value'];
-        const event = new CustomEvent('select-item', { detail: itemValue });
-        this.dispatchEvent(event);
-      }, false);
+      button.addEventListener("click", this._handleSelectClick, false);
     });    
+  }
+
+  _handleSelectClick(clickEvent) {
+    const itemValue = parseAttributes(clickEvent.target.attributes)['data-value'];
+    const event = new CustomEvent('select-item', { detail: itemValue });
+    this.dispatchEvent(event);
   }
 }
 
