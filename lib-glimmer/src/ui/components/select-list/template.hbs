@@ -1,0 +1,10 @@
+<div>
+
+  {{#each this.items key="@index" as |item|}}
+    <div class="select-list__item">
+      {{item.label}}
+      <button type="button" class="select-list__select-button"onclick={{action selectItem item.value}}>{{icon}}</button>
+    </div>
+  {{/each}}
+
+</div>

@@ -1,8 +1,8 @@
 import App from './main';
 import { ComponentManager, setPropertyDidChange } from '@glimmer/component';
+import initializeCustomElements from 'temp-glimmer-component-endangeredmassa';
 
 const app = new App();
-const containerElement = document.getElementById('app');
 
 setPropertyDidChange(() => {
   app.scheduleRerender();
@@ -14,6 +14,14 @@ app.registerInitializer({
   }
 });
 
-app.renderComponent('lib-glimmer', containerElement, null);
+// const containerElement = document.getElementById('app');
+// if (containerElement) {
+//   app.renderComponent('lib-glimmer', containerElement, null);
+// }
 
 app.boot();
+
+initializeCustomElements(app, [
+  {name: 'select-list', trackedAttributes: ['items', 'icon']}
+]);
+

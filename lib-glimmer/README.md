@@ -1,34 +1,28 @@
 # lib-glimmer
 
-This README outlines the details of collaborating on this Glimmer application.
-A short introduction of this app could easily go here.
+This is a UI Component Library written in Glimmer and compiled to Web Components.
 
-## Prerequisites
 
-You will need the following things properly installed on your computer.
+## build
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with NPM)
-* [Yarn](https://yarnpkg.com/en/)
-* [Ember CLI](https://ember-cli.com/)
+```
+npm install
+ember build
+```
 
-## Installation
+The output will be in `./dist/app.js`.
 
-* `git clone <repository-url>` this repository
-* `cd lib-glimmer`
-* `yarn`
 
-## Running / Development
+## test (manual)
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+```
+npm install
+ember s
+```
 
-### Building
+Open file in browser: `./dist/index.html`
 
-* `ember build` (development)
-* `ember build --environment production` (production)
+Note that live reloading will not work, but file watching and rebuilding will work.
 
-## Further Reading / Useful Links
-
-* [glimmerjs](http://github.com/tildeio/glimmer/)
-* [ember-cli](https://ember-cli.com/)
+We need to do this because you can't easily test your component in web-component mode
+with `ember s`.

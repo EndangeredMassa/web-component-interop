@@ -7,18 +7,46 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{content-for "head"}}
-
     <link rel="stylesheet" href="{{rootURL}}app.css">
 
-    {{content-for "head-footer"}}
   </head>
   <body>
-    {{content-for "body"}}
-
-    <div id="app"></div>
+    
     <script src="{{rootURL}}app.js"></script>
 
-    {{content-for "body-footer"}}
+
+
+    Todo: <input type="text" id="new-todo"></input>
+    <button id="add-todo"> + </button>
+
+    <hr> 
+
+
+
+    <select-list icon="X" items='[{"label":"Write Tests","value":"write-tests"}]'></select-list>
+
+
+    <script>
+    const items = [{"label": "Write Tests", "value": "write-tests"}];
+
+    const selectList = document.querySelector('select-list');
+    selectList.addEventListener('select-item', function(event) {
+      const selectedValue = event.detail;
+      const itemsIndex = items.findIndex(item => item.value === selectedValue);
+      items.splice(itemsIndex, 1);
+      selectList.setAttribute('items', JSON.stringify(items));
+    });
+
+    const addButton = document.querySelector('#add-todo');
+    addButton.addEventListener('click', function(event) {
+      const newTodo = document.querySelector('#new-todo').value;
+      items.push({
+        label: newTodo,
+        value: newTodo
+      });
+      selectList.setAttribute('items', JSON.stringify(items));
+    });
+    </script>
+
   </body>
 </html>
