@@ -1,103 +1,35 @@
-<!-- Web Component Definition Code-->
 
-<template id="hello-element-template">
-  Hi {{name}}!
-
-  <button id="action">Do It!</button>
-</template>
-
-<script>
-class HelloElement extends HTMLElement {
-  constructor() {
-    super();
-
-    // properties
-    this.name = null;
-    this.clickCount = 0;
-
-    // setup web component's shadow root
-    this.attachShadow({mode: 'open'});
-    this.template = document.querySelector('#hello-element-template');
-    
-    // initial template render
-    this.render();
-  }
-  
-  // Monitor the 'name' attribute for changes.
-  static get observedAttributes() { return ['name']; }
-
-  // Respond to attribute changes.
-  attributeChangedCallback(attr, oldValue, newValue) {
-    if (attr === "name") {
-      this.name = newValue;
-    }
-    this.render();
-  }
-
-  render(){
-    this._removeChildren();
-    this._setupTemplate();
-    this._interpolateAttributes();
-    this._setupEventHandlers();
-  }
-
-  _removeChildren() {
-    while (this.shadowRoot.hasChildNodes()) {
-      this.shadowRoot.removeChild(this.shadowRoot.lastChild);
-    }
-  }
-
-  _setupTemplate() {
-    const instance = this.template.content.cloneNode(true);
-    this.shadowRoot.appendChild(instance);
-  }
-
-  _interpolateAttributes() {
-    this.shadowRoot.innerHTML = this.shadowRoot.innerHTML.replace('{{name}}', this.name);
-  }
-
-  _setupEventHandlers() {
-    this.shadowRoot.querySelector('#action').addEventListener("click", (clickEvent) => {
-      this.clickCount += 1;
-      
-      const event = new CustomEvent('do-something', { detail: this.clickCount });
-      this.dispatchEvent(event);
-    }, false);
-  }
-}
-
-// Define the new element
-customElements.define('hello-element', HelloElement);
-</script>
+<script src="./select-list.js"></script>
 
 
 
-
-<!-- Consumer Code -->
-
-
-
-
-<hello-element name="Sean"></hello-element>
-
+Todo: <input type="text" id="new-todo"></input>
+<button id="add-todo"> + </button>
 
 <hr> 
 
-Name: <input type="text" id="new-name"></input>
-<button id="change-name">Change</button>
-<br>
-Click Count: <span id="output">0</span>
+<select-list icon="X" items='[{"label":"Write Tests","value":"write-tests"}]'></select-list>
+
 
 <script>
-const helloElement = document.querySelector('hello-element');
-helloElement.addEventListener('do-something', function(event) {
-  document.querySelector('#output').textContent = event.detail; 
+const items = [{"label": "Write Tests", "value": "write-tests"}];
+
+const selectList = document.querySelector('select-list');
+selectList.addEventListener('select-item', function(event) {
+  const selectedValue = event.detail;
+  const itemsIndex = items.findIndex(item => item.value === selectedValue);
+  items.splice(itemsIndex, 1);
+  selectList.setAttribute('items', JSON.stringify(items));
 });
 
-const nameButton = document.querySelector('#change-name');
-nameButton.addEventListener('click', function(event){
-  const newName = document.querySelector('#new-name').value;
-  document.querySelector('hello-element').setAttribute('name', newName);
+const addButton = document.querySelector('#add-todo');
+addButton.addEventListener('click', function(event) {
+  const newTodo = document.querySelector('#new-todo').value;
+  items.push({
+    label: newTodo,
+    value: newTodo
+  });
+  selectList.setAttribute('items', JSON.stringify(items));
 });
 </script>
 
