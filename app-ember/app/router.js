@@ -7,10 +7,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('index', {path: '/'});
-
-  this.route('lib', {path: '/lib'}, function() {
+  this.route('lib', {path: '/'}, function() {
     this.route('glimmer', {path: '/glimmer'});
+    this.route('raw', {path: '/raw'});
   });
 });
 

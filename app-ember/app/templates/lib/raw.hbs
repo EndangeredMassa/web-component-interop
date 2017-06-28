@@ -1,0 +1,10 @@
+
+Todo: {{input value=newTodo id="new-todo"}}
+<button id="add-todo" {{action 'addItem'}}> + </button>
+
+<hr>
+
+{{select-list-raw-wrap
+  items=items
+  icon="X"
+  onSelectItem=(action 'removeItem')}}
