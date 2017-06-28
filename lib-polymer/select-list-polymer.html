@@ -1,0 +1,42 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="select-list-polymer">
+  <template is="dom-repeat" items="[[items]]">
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <div>pickle</div>
+
+  </template>
+
+  <script>
+    /**
+     * `select-list-polymer`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class SelectListPolymer extends Polymer.Element {
+      static get is() { return 'select-list-polymer'; }
+      static get properties() {
+        return {
+          items: {
+            type: Array,
+            value: [{value: '123', label: 'poly test'},{value: '123', label: 'poly test'}]
+          },
+          icon: {
+            type: String,
+            value: 'O'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(SelectListPolymer.is, SelectListPolymer);
+  </script>
+</dom-module>
